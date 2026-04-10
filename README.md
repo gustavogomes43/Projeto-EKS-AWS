@@ -16,11 +16,21 @@ Este repositório detalha a implementação de uma infraestrutura escalável uti
 
 ### 🔹 Infraestrutura como Serviço (EKS Cluster)
 ![EKS Setup](img/11.png)
+![EKS Setup](img/1.png)
+![EKS Setup](img/2.png)
+![EKS Setup](img/3.png)
+![EKS Setup](img/4.png)
+![EKS Setup](img/5.png)
 
 ---
 
 ### 🔹 Orquestração e Deploy de Workloads
 ![Kubectl Deploy](img/12.png)
+![EKS Setup](img/6.png)
+![EKS Setup](img/7.png)
+![EKS Setup](img/8.png)
+![EKS Setup](img/9.png)
+![EKS Setup](img/10.png)
 
 ---
 
