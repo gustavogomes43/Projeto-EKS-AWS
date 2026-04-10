@@ -1,42 +1,61 @@
 # ☁️ AWS Cloud & Infrastructure Portfolio - Gustavo Gomes
 
-Repositório focado em **Infraestrutura como Código (IaC)** e **Sustentação de Ambientes Críticos** na AWS.
+Repositório focado em **Infraestrutura como Código (IaC)** e **Modernização de Aplicações** na AWS. Aqui documento projetos reais de transição para arquiteturas escaláveis e otimizadas.
 
 ---
 
 ## 🦂 Projeto Scorpion (Mission Critical EKS Cluster)
 
-Este projeto demonstra o provisionamento completo de um cluster Kubernetes (EKS) utilizando Terraform, com foco em alta disponibilidade e segurança.
+Provisionamento de um cluster Kubernetes gerenciado (EKS) focado em alta disponibilidade e resiliência.
 
-### 🛠️ Tecnologias e Ferramentas
-| Ícone | Ferramenta | Descrição |
+### 🛠️ Tecnologias
+| Ferramenta | Nome | Descrição |
 | :---: | :---: | :--- |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="35"> | **AWS EKS** | Orquestração de containers gerenciada. |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" width="35"> | **Terraform** | IaC para provisionamento de VPC, IAM e Clusters. |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="35"> | **AWS EKS** | Orquestração de containers. |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" width="35"> | **Terraform** | IaC para VPC, IAM e EKS. |
 
-### 📸 Galeria de Implementação (Passo a Passo)
-
-#### 🔹 Fase 1: Infraestrutura e VPC
-Nesta etapa, a VPC e as subnets foram desenhadas para suportar o tráfego do cluster.
-* **Planejamento da Rede:** ![VPC Plan](img/1.png)
-* **Provisionamento de Recursos:** ![Terraform Apply](img/2.png)
-* **Mapa de Recursos da VPC:** ![Resource Map](img/14.png)
-
-#### 🔹 Fase 2: Provisionamento do Cluster EKS
-Execução do Terraform para criação do Control Plane e instâncias Worker.
-* **Criação do Cluster em Progresso:** ![EKS Creating](img/3.png)
-* **Finalização do Provisionamento (8m24s):** ![EKS Done](img/4.png)
-
-#### 🔹 Fase 3: Gerenciamento de Nodes e Instâncias
-Validação dos grupos de nós e tipos de instâncias utilizadas (t3.micro).
-* **Node Groups Ativos:** ![Node Groups](img/12.png)
-* **Detalhes da Instância EC2:** ![EC2 Details](img/13.png)
-
+### 📸 Galeria de Implementação (Scorpion)
+* **Arquitetura de Rede:** ![VPC](img/14.png)
+* **Provisionamento:** ![Apply](img/4.png)
+* **Cluster Ativo:** ![Nodes](img/12.png)
 
 ---
 
 ## 🎵 Projeto Aria.net (S3 Static Hosting)
-Hospedagem serverless de alta performance.
+
+Este projeto foca na automação de hospedagem serverless de baixa latência e custo zero.
+
+### 🛠️ Tecnologias
+| Ferramenta | Nome | Descrição |
+| :---: | :---: | :--- |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" width="35"> | **Amazon S3** | Hosting estático e armazenamento. |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-plain.svg" width="35"> | **Terraform** | Automação de Buckets e Policies. |
+
+### 📸 Galeria de Implementação (Aria)
+
+#### 🔹 Fase 1: Escopo e Planejamento IaC
+Provisionamento inicial dos recursos de storage.
+* **Terraform Init & Plan:** ![Plan](img/Terraform%20I.png)
+* **Definição de Recursos:** ![Recursos](img/Terraform%20II.png)
+
+#### 🔹 Fase 2: Automação e Outputs
+Configuração de variáveis e visualização de resultados.
+* **Criação do Bucket:** ![Bucket](img/Terraform%20III.png)
+* **Outputs de Endpoint:** ![Outputs](img/Terraform%20IV.png)
+
+#### 🔹 Fase 3: Segurança e Políticas de Acesso
+Configuração de Bucket Policies para acesso público controlado.
+* **Security Policy:** ![Policy](img/Terraform%20V.png)
+* **Bloqueio de Acesso Indevido:** ![Public Access](img/Terraform%20VI.png)
+
+#### 🔹 Fase 4: Validação e Deployment Final
+Site publicado e funcional no endpoint da AWS.
+* **Apply Finalizado:** ![Done](img/Terraform%20IX.png)
+* **Site Online:** ![Aria Live](img/image_b791f0.png.png)
+
+### 🚀 Diferenciais Técnicos
+* **FinOps:** Custo zero utilizando o AWS Free Tier.
+* **Sustentação:** Infraestrutura imutável - qualquer alteração é feita via código, eliminando o "clique-ops".
 
 ---
 *Este portfólio demonstra resiliência técnica e foco na sustentação de ambientes críticos.*
