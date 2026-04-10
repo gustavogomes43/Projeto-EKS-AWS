@@ -1,53 +1,52 @@
 # ☁️ AWS Cloud & Infrastructure Portfolio - Gustavo Gomes
 
-Repositório focado em **Infraestrutura como Código (IaC)** e **Modernização de Aplicações** na AWS. Aqui documento a transição de serviços legados para arquiteturas modernas, escaláveis e com foco em otimização financeira.
+Repositório focado em **Infraestrutura como Código (IaC)** e **Sustentação de Ambientes Críticos** na AWS.
 
 ---
 
-## 🦂 Projeto Scorpion (Mission Critical EKS)
+## 🦂 Projeto Scorpion (EKS Cluster Modernization)
 
-Este projeto simula um ambiente de produção para aplicações conteinerizadas de alta disponibilidade. O foco principal foi o provisionamento de um cluster Kubernetes gerenciado, garantindo resiliência e segurança.
+Este projeto representa a modernização de uma infraestrutura legada para um modelo de containers orquestrados. Foquei em criar um ambiente resiliente, seguro e com custos otimizados.
 
-### 🛠️ Tecnologias e Ferramentas
-| Ícone | Ferramenta | Descrição |
-| :---: | :---: | :--- |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="40"> | **AWS EKS** | Orquestração de containers com plano de controle gerenciado. |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" width="40"> | **Terraform** | Provisionamento de infraestrutura imutável e versionada. |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" width="40"> | **Kubectl** | Gerenciamento e inspeção dos nós e workloads do cluster. |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" width="40"> | **Linux Bash** | Automação via CLI para troubleshooting e configuração. |
+### 🛠️ Ferramentas Utilizadas
+| Ferramenta | Nome | Descrição |
+| :---: | :--- | :--- |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="35"> | **AWS EKS** | Gerenciamento do Cluster Kubernetes (Control Plane). |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" width="35"> | **Terraform** | Orquestração de toda a infraestrutura como código (VPC, IAM, EKS). |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" width="35"> | **Kubectl** | Interação e deploy de recursos dentro do cluster. |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" width="35"> | **Linux Bash** | Automação de scripts de configuração e instalação. |
 
-### 🚀 Desafios Resolvidos e Visão de Engenharia
-* **Troubleshooting de Rede Multi-AZ:** Identifiquei e corrigi a falha de registro dos Worker Nodes que estavam isolados em subnets privadas. 
-* **Mentalidade FinOps:** Implementei instâncias `t3.micro` e readequei a rota de rede para subnets públicas com **Security Groups restritos**, economizando o custo fixo de um NAT Gateway sem expor a aplicação.
-* **Segurança (IAM):** Configuração de Roles granulares seguindo o Princípio do Menor Privilégio.
+### 🔍 Detalhes Técnicos e Troubleshooting
+* **Rede de Alta Disponibilidade:** Construção de uma VPC Multi-AZ com subnets públicas e privadas para isolamento de carga.
+* **FinOps na Prática:** Identifiquei que o uso de NAT Gateways elevaria o custo do laboratório desnecessariamente. Solucionei o problema movendo os nodes para subnets públicas com **Security Groups extremamente restritivos**, mantendo a segurança e custo zero de tráfego NAT.
+* **IAM Roles for Service Accounts:** Configuração de permissões granulares para que o cluster tenha acesso apenas ao necessário na conta AWS.
 
-### 📸 Evidências do Sucesso
-> **Status dos Nós:**
-> ![Kubectl Nodes Status](img/image_c7f3c2.png)
-> *Nós operacionais e com status 'Ready' em zona de disponibilidade us-east-1.*
-
----
-
-## 🎵 Projeto Aria.net (S3 Static Hosting)
-
-Desenvolvimento de uma arquitetura **Serverless** para hospedagem de sites estáticos, focada em performance e custo próximo de zero.
-
-### 🛠️ Tecnologias e Ferramentas
-| Ícone | Ferramenta | Descrição |
-| :---: | :---: | :--- |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="40"> | **AWS S3** | Armazenamento de objetos configurado para Static Website Hosting. |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" width="40"> | **Terraform** | Automação de Buckets e gerenciamento de Public Access Blocks. |
-
-### 🚀 Benefícios Alcançados
-* **Escalabilidade:** Suporte a picos de tráfego sem gerenciamento de instâncias.
-* **Custo Zero:** Implementação 100% dentro dos limites do AWS Free Tier.
+> **Status do Cluster:**
+> ![Kubectl Nodes](img/image_c7f3c2.png)
+> *Evidência dos nós provisionados e prontos para receber carga.*
 
 ---
 
-## 📊 Resultados Consolidados
-* **Agilidade:** Redução do tempo de provisionamento em **95%** via IaC.
-* **Segurança:** Configurações de rede e acesso blindadas via Terraform.
-* **Confiabilidade:** Ambiente 100% replicável e livre de erros manuais.
+## 🎵 Projeto Aria.net (Static Web Hosting)
+
+Solução de baixo custo para hospedagem de aplicações front-end utilizando serviços globais da AWS.
+
+### 🛠️ Ferramentas Utilizadas
+| Ferramenta | Nome | Descrição |
+| :---: | :--- | :--- |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" width="35"> | **Amazon S3** | Hospedagem de arquivos estáticos com alta durabilidade. |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-plain.svg" width="35"> | **Terraform** | Automação do bucket e políticas de acesso (Bucket Policy). |
+
+### 🚀 Diferenciais do Projeto
+* **Escalabilidade:** Arquitetura serverless que suporta milhões de acessos sem intervenção manual.
+* **Segurança:** Implementação de bloqueio de acesso público indevido via Terraform.
 
 ---
-*Este portfólio demonstra resiliência técnica e foco na sustentação de ambientes críticos.*
+
+## 📊 Resultados Alcançados
+* **Agilidade:** Provisionamento completo do ambiente EKS em menos de 15 minutos.
+* **Padronização:** Uso de módulos Terraform para garantir que o ambiente seja replicável.
+* **Custo-Eficiência:** Arquiteturas desenhadas para aproveitar o Free Tier e evitar desperdícios.
+
+---
+*Este portfólio é um documento vivo da minha evolução como Engenheiro de Cloud.*
