@@ -16,7 +16,7 @@ Implementação de um cluster gerenciado **AWS EKS**. A arquitetura utiliza **No
 
 ## 🛠️ Stack Tecnológica & Engenharia de Containers
 
-| Ferramenta | Ícone | Justivicativa Técnica |
+| Ferramenta | Ícone | Justificativa Técnica |
 | :--- | :---: | :--- |
 | **Kubernetes** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" width="45"> | Orquestração de containers e gerenciamento de ReplicaSets. |
 | **AWS EKS** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="45"> | Plano de controle gerenciado de alta disponibilidade. |
@@ -28,25 +28,25 @@ Implementação de um cluster gerenciado **AWS EKS**. A arquitetura utiliza **No
 
 ### 🔹 Infraestrutura como Serviço (EKS Cluster)
 *Provisionamento do cluster e validação dos Worker Nodes.*
-<img src="img/EKS%20III.png" width="100%">
+![EKS Setup](img/EKS%20III.png)
 
 ---
 
 ### 🔹 Orquestração e Deploy de Workloads
 *Gerenciamento de pods e deploy da aplicação via kubectl.*
-<img src="img/EKS%20VI.png" width="100%">
+![Kubectl Deploy](img/EKS%20VI.png)
 
 ---
 
 ### 🔹 Escalabilidade e Saúde do Cluster
 *Monitoramento da distribuição de carga entre os nós do cluster.*
-<img src="img/EKS%20IX.png" width="100%">
+![EKS Nodes](img/EKS%20IX.png)
 
 ---
 
 ### 🔹 Aplicação Scorpion em Produção
 *O resultado final: aplicação orquestrada e acessível globalmente.*
-<img src="img/image_4a3f28.png.png" width="100%">
+![Scorpion Live](img/image_4a3f28.png.png)
 
 ---
 
