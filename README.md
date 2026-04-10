@@ -1,57 +1,30 @@
 # 🦂 Projeto Scorpion: Orquestração de Microserviços com AWS EKS & Kubernetes
 
-Este repositório detalha a implementação de uma infraestrutura escalável para a aplicação **Scorpion**, utilizando o **Amazon Elastic Kubernetes Service (EKS)**. O foco do projeto foi garantir alta disponibilidade, resiliência e automação de deploy em larga escala.
+Este repositório detalha a implementação de uma infraestrutura escalável utilizando o **Amazon Elastic Kubernetes Service (EKS)**. O foco foi garantir alta disponibilidade e automação de deploy.
 
 ---
 
-## 🚀 Contexto do Projeto & Arquitetura
-
-### 🔴 O Desafio
-Hospedar uma aplicação crítica que exige **auto-healing** e escalabilidade horizontal. Uma solução baseada em instâncias simples não seria capaz de gerenciar o ciclo de vida dos containers de forma eficiente.
-
-### 🟢 A Solução
-Implementação de um cluster gerenciado **AWS EKS**. A arquitetura utiliza **Nodes** distribuídos em múltiplas zonas de disponibilidade (Multi-AZ), garantindo resiliência total.
-
----
-
-## 🛠️ Stack Tecnológica & Engenharia de Containers
-
+## 🛠️ Stack Tecnológica
 | Ferramenta | Ícone | Justificativa Técnica |
 | :--- | :---: | :--- |
-| **Kubernetes** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" width="45"> | Orquestração de containers e gerenciamento de ReplicaSets. |
-| **AWS EKS** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="45"> | Plano de controle gerenciado de alta disponibilidade. |
-| **Docker** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" width="45"> | Padronização da aplicação Scorpion em imagens imutáveis. |
+| **Kubernetes** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" width="40"> | Orquestração de containers e auto-healing. |
+| **AWS EKS** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="40"> | Cluster gerenciado de alta disponibilidade. |
 
 ---
 
-## 📸 Evidências de Implementação (Case Study)
+## 📸 Evidências de Implementação
 
-### 🔹 Infraestrutura como Serviço (EKS Cluster)
-*Provisionamento do cluster e validação dos Worker Nodes.*
-![EKS Setup](img/EKS%20III.png)
+### 🔹 Infraestrutura EKS
+<img src="img/EKS%20III.png" width="100%">
 
----
+### 🔹 Deploy de Workloads
+<img src="img/EKS%20VI.png" width="100%">
 
-### 🔹 Orquestração e Deploy de Workloads
-*Gerenciamento de pods e deploy da aplicação via kubectl.*
-![Kubectl Deploy](img/EKS%20VI.png)
+### 🔹 Monitoramento de Nodes
+<img src="img/EKS%20IX.png" width="100%">
 
----
-
-### 🔹 Escalabilidade e Saúde do Cluster
-*Monitoramento da distribuição de carga entre os nós do cluster.*
-![EKS Nodes](img/EKS%20IX.png)
-
----
-
-### 🔹 Aplicação Scorpion em Produção
-*O resultado final: aplicação orquestrada e acessível globalmente.*
-![Scorpion Live](img/image_4a3f28.png.png)
-
----
-
-## 🏁 Conclusão
-O Projeto Scorpion demonstra a maturidade na gestão de ambientes conteinerizados na nuvem AWS.
+### 🔹 Aplicação Scorpion Online
+<img src="img/image_4a3f28.png.png" width="100%">
 
 ---
 *Documentação desenvolvida por Gustavo Gomes | Cloud & DevOps Engineer*
