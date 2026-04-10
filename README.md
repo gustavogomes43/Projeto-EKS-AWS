@@ -1,52 +1,55 @@
 # ☁️ AWS Cloud & Infrastructure Portfolio - Gustavo Gomes
 
-Repositório focado em **Infraestrutura como Código (IaC)** e **Sustentação de Ambientes Críticos** na AWS.
+Repositório focado em **Infraestrutura como Código (IaC)** e **Sustentação de Ambientes Críticos** na AWS. Aqui documento a transição de serviços legados para arquiteturas modernas, escaláveis e com foco em otimização financeira.
 
 ---
 
-## 🦂 Projeto Scorpion (EKS Cluster Modernization)
+## 🦂 Projeto Scorpion (Mission Critical EKS Cluster)
 
 Este projeto representa a modernização de uma infraestrutura legada para um modelo de containers orquestrados. Foquei em criar um ambiente resiliente, seguro e com custos otimizados.
 
-### 🛠️ Ferramentas Utilizadas
-| Ferramenta | Nome | Descrição |
-| :---: | :--- | :--- |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="35"> | **AWS EKS** | Gerenciamento do Cluster Kubernetes (Control Plane). |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" width="35"> | **Terraform** | Orquestração de toda a infraestrutura como código (VPC, IAM, EKS). |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" width="35"> | **Kubectl** | Interação e deploy de recursos dentro do cluster. |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" width="35"> | **Linux Bash** | Automação de scripts de configuração e instalação. |
+### 🛠️ Tecnologias e Ferramentas
+| Ícone | Ferramenta | Descrição |
+| :---: | :---: | :--- |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="35"> | **AWS EKS** | Orquestração de containers com plano de controle gerenciado. |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" width="35"> | **Terraform** | Provisionamento de infraestrutura imutável e versionada (VPC, IAM, EKS). |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" width="35"> | **Kubectl** | Gerenciamento e inspeção dos nós e workloads do cluster via CLI. |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" width="35"> | **Linux Bash** | Automação de scripts de configuração, instalação de ferramentas e troubleshooting. |
 
-### 🔍 Detalhes Técnicos e Troubleshooting
-* **Rede de Alta Disponibilidade:** Construção de uma VPC Multi-AZ com subnets públicas e privadas para isolamento de carga.
-* **FinOps na Prática:** Identifiquei que o uso de NAT Gateways elevaria o custo do laboratório desnecessariamente. Solucionei o problema movendo os nodes para subnets públicas com **Security Groups extremamente restritivos**, mantendo a segurança e custo zero de tráfego NAT.
-* **IAM Roles for Service Accounts:** Configuração de permissões granulares para que o cluster tenha acesso apenas ao necessário na conta AWS.
+### 🚀 Desafios e Visão de Engenharia
+* **Infraestrutura como Código (IaC):** Todo o ambiente (Rede, Segurança, Computação) é replicável e versionado.
+* **Troubleshooting Multi-AZ:** Identifiquei e corrigi a falha de registro dos Worker Nodes que estavam isolados em subnets privadas. 
+* **FinOps na Prática:** Readequei a arquitetura de rede para subnets públicas com **Security Groups extremamente restritivos**, eliminando o custo fixo elevado de um NAT Gateway em ambiente de laboratório, mantendo a segurança e o custo zero de tráfego.
 
-> **Status do Cluster:**
-> ![Kubectl Nodes](img/image_c7f3c2.png)
-> *Evidência dos nós provisionados e prontos para receber carga.*
-
----
-
-## 🎵 Projeto Aria.net (Static Web Hosting)
-
-Solução de baixo custo para hospedagem de aplicações front-end utilizando serviços globais da AWS.
-
-### 🛠️ Ferramentas Utilizadas
-| Ferramenta | Nome | Descrição |
-| :---: | :--- | :--- |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" width="35"> | **Amazon S3** | Hospedagem de arquivos estáticos com alta durabilidade. |
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-plain.svg" width="35"> | **Terraform** | Automação do bucket e políticas de acesso (Bucket Policy). |
-
-### 🚀 Diferenciais do Projeto
-* **Escalabilidade:** Arquitetura serverless que suporta milhões de acessos sem intervenção manual.
-* **Segurança:** Implementação de bloqueio de acesso público indevido via Terraform.
+### 📸 Evidências do Sucesso
+> **Status dos Nós Operacionais:**
+> <img src="https://raw.githubusercontent.com/gustavogomes43/meu-portfolio-aws/main/img/image_c7f3c2.png" alt="Kubectl Nodes Status" width="100%">
+> *Nós operacionais e com status 'Ready' em zona de disponibilidade us-east-1, confirmando o sucesso do provisionamento.*
 
 ---
 
-## 📊 Resultados Alcançados
-* **Agilidade:** Provisionamento completo do ambiente EKS em menos de 15 minutos.
-* **Padronização:** Uso de módulos Terraform para garantir que o ambiente seja replicável.
-* **Custo-Eficiência:** Arquiteturas desenhadas para aproveitar o Free Tier e evitar desperdícios.
+## 🎵 Projeto Aria.net (S3 Static Hosting)
+
+Desenvolvimento de uma arquitetura **Serverless** para hospedagem de sites estáticos, focada em performance e custo próximo de zero.
+
+### 🛠️ Tecnologias e Ferramentas
+| Ícone | Ferramenta | Descrição |
+| :---: | :---: | :--- |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="35"> | **Amazon S3** | Armazenamento de objetos configurado para Static Website Hosting. |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" width="35"> | **Terraform** | Automação do bucket, políticas de acesso e gerenciamento de Public Access Blocks. |
+
+### 🚀 Diferenciais e Sustentabilidade
+* **Escalabilidade Infinita:** Solução baseada em S3 que suporta picos de tráfego sem gerenciamento de instâncias.
+* **Segurança de Dados:** Implementação de políticas de acesso granular via código (Bucket Policy).
+* **Custo-Eficiência:** Implementação focada em manter o cliente dentro dos limites gratuitos (Free Tier) da AWS.
 
 ---
-*Este portfólio é um documento vivo da minha evolução como Engenheiro de Cloud.*
+
+## 📊 Resultados Consolidados
+
+* **Agilidade:** Deploy de infraestrutura complexa (VPC + EKS) em menos de 15 minutos via IaC.
+* **Confiabilidade:** Redução de erros humanos através da eliminação de configurações manuais via Console.
+* **Conformidade:** Ambiente 100% versionado e seguindo o Principle of Least Privilege (Menor Privilégio) nas IAM Roles.
+
+---
+*Este portfólio demonstra resiliência técnica e foco na sustentação de ambientes críticos.*
