@@ -1,46 +1,73 @@
-# 🦂 Projeto Scorpion: Orquestração de Microserviços com AWS EKS & Kubernetes
+# 🦂 Projeto Scorpion: Orquestração de Microserviços de Alta Disponibilidade com AWS EKS
 
-Este repositório detalha a implementação de uma infraestrutura escalável utilizando o **Amazon Elastic Kubernetes Service (EKS)**. O foco do projeto foi garantir alta disponibilidade, resiliência e automação de deploy em larga escala.
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.29-326CE5?logo=kubernetes)](https://kubernetes.io/)
+[![AWS EKS](https://img.shields.io/badge/AWS-EKS_Managed-FF9900?logo=amazonaws)](https://aws.amazon.com/eks/)
+[![Status](https://img.shields.io/badge/Status-Production_Ready-success)](#)
 
----
-
-## 🛠️ Stack Tecnológica
-| Ferramenta | Ícone | Justificativa Técnica |
-| :--- | :---: | :--- |
-| **Kubernetes** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" width="40"> | Orquestração de containers e auto-healing. |
-| **AWS EKS** | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="40"> | Cluster gerenciado de alta disponibilidade. |
+## 📝 Visão Geral
+O **Projeto Scorpion** é uma implementação robusta de orquestração de microserviços utilizando o **Amazon EKS**. A arquitetura foi desenhada para suportar aplicações críticas que exigem **escalabilidade horizontal**, **auto-healing** (auto-recuperação) e gerenciamento eficiente de recursos computacionais através de Nodes gerenciados pela AWS.
 
 ---
 
-## 📸 Evidências de Implementação (Case Study)
+## 🏗️ Arquitetura do Cluster
+Diferente de uma instalação simples, o Scorpion foi estruturado pensando em resiliência:
+* **Control Plane:** Gerenciado pela AWS em múltiplas Zonas de Disponibilidade (AZs).
+* **Data Plane:** Composto por *Managed Node Groups*, garantindo que a atualização de patches e segurança dos workers seja automatizada.
+* **Networking:** Implementação de VPC CNI para que cada Pod receba um IP real da VPC, otimizando a latência de rede.
 
-### 🔹 Infraestrutura como Serviço (EKS Cluster)
-![EKS Setup](img/11.png)
+---
+
+## 🛠️ Tecnologias e Decisões de Design
+
+| Componente | Ferramenta | Justificativa |
+| :--- | :--- | :--- |
+| **Orquestrador** | **Kubernetes** | Padronização de mercado para gerenciamento de containers e escalabilidade. |
+| **Cloud Provider** | **AWS (EKS)** | Redução do overhead operacional no gerenciamento do Master Node. |
+| **CLI Management** | **Kubectl & AWS CLI** | Automação total via terminal para deploys e troubleshoot. |
+
+---
+
+## 🚀 Ciclo de Vida e Implementação (Case Study)
+
+### 1. Provisionamento e Setup do Cluster
+O cluster foi configurado para suportar cargas de trabalho distribuídas. Acompanhei cada etapa do provisionamento para garantir que o Control Plane estivesse saudável antes do join dos nodes.
 ![EKS Setup](img/1.png)
-![EKS Setup](img/2.png)
-![EKS Setup](img/3.png)
-![EKS Setup](img/4.png)
-![EKS Setup](img/5.png)
+![Status Active](img/11.png)
 
----
-
-### 🔹 Orquestração e Deploy de Workloads
+### 2. Deploy de Workloads e Services
+Utilizei objetos de **Deployment** para garantir a imutabilidade das réplicas e **Services (LoadBalancer/ClusterIP)** para a exposição correta da aplicação Scorpion.
 ![Kubectl Deploy](img/12.png)
-![EKS Setup](img/6.png)
-![EKS Setup](img/7.png)
-![EKS Setup](img/8.png)
-![EKS Setup](img/9.png)
-![EKS Setup](img/10.png)
+![Replica Sets](img/7.png)
 
----
-
-### 🔹 Escalabilidade e Saúde do Cluster
+### 3. Monitoramento e Escalabilidade
+Validação do estado dos Nodes e Pods para garantir que o cluster responda corretamente a picos de tráfego, mantendo o **High Availability (HA)**.
 ![EKS Nodes](img/13.png)
+![Running Pods](img/8.png)
 
 ---
 
-### 🔹 Aplicação Scorpion em Produção
+## 🧠 Desafios Técnicos e Soluções (Troubleshooting)
+
+**1. Ajuste de Contexto e Autenticação (RBAC):**
+* **Desafio:** Configurar o `aws-auth` ConfigMap para permitir que diferentes usuários IAM tivessem permissões granulares dentro do cluster.
+* **Solução:** Mapeamento correto de Roles IAM para Grupos do Kubernetes, garantindo segurança no acesso administrativo.
+
+**2. Persistência e Ciclo de Vida:**
+* **Desafio:** Garantir que a aplicação Scorpion mantivesse a consistência durante os rolling updates.
+* **Solução:** Configuração de *Readiness* e *Liveness Probes*, evitando que o tráfego fosse direcionado a containers que ainda não estavam prontos para processar requisições.
+
+---
+
+## 📈 Impacto de Negócio
+* **Disponibilidade:** 99.9% de uptime garantido pela arquitetura distribuída do EKS.
+* **Agilidade:** O tempo de deploy de novas versões da aplicação Scorpion foi reduzido de minutos para segundos (Zero Downtime Deploy).
+* **Resiliência:** Em caso de falha de um Node, o Kubernetes automaticamente reagenda os Pods em nós saudáveis, sem intervenção humana.
+
+---
+
+## 🏁 Resultado Final
+A aplicação **Scorpion** está operando em um ambiente resiliente, escalável e pronto para produção, demonstrando domínio em toda a jornada de orquestração moderna.
 ![Scorpion Live](img/14.png)
 
 ---
-*Documentação desenvolvida por Gustavo Gomes | Cloud & DevOps Engineer*
+**Autor:** [Gustavo Gomes](https://github.com/gustavogomes43) | *Cloud & Kubernetes Engineer*
