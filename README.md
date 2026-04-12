@@ -11,6 +11,9 @@ O **Projeto Scorpion** é uma implementação robusta de orquestração de micro
 
 ## 🏗️ Arquitetura do Cluster
 Diferente de uma instalação simples, o Scorpion foi estruturado pensando em resiliência:
+
+![Arquitetura EKS Scorpion](img/arquitetura-scorpion.png)
+
 * **Control Plane:** Gerenciado pela AWS em múltiplas Zonas de Disponibilidade (AZs).
 * **Data Plane:** Composto por *Managed Node Groups*, garantindo que a atualização de patches e segurança dos workers seja automatizada.
 * **Networking:** Implementação de VPC CNI para que cada Pod receba um IP real da VPC, otimizando a latência de rede.
