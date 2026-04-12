@@ -9,11 +9,32 @@ O **Projeto Scorpion** é uma implementação robusta de orquestração de micro
 
 ---
 
-## 🏗️ Arquitetura do Cluster
-Diferente de uma instalação simples, o Scorpion foi estruturado pensando em resiliência:
-* **Control Plane:** Gerenciado pela AWS em múltiplas Zonas de Disponibilidade (AZs).
-* **Data Plane:** Composto por *Managed Node Groups*, garantindo que a atualização de patches e segurança dos workers seja automatizada.
-* **Networking:** Implementação de VPC CNI para que cada Pod receba um IP real da VPC, otimizando a latência de rede.
+## 🏗️ Arquitetura de Engenharia do Cluster EKS (The Scorpion Design)
+
+Diferente de uma instalação simples e monolítica, o **Projeto Scorpion** foi estruturado seguindo os princípios de *Well-Architected Framework* da AWS para garantir que a aplicação seja resiliente, segura e auditável.
+
+Abaixo, apresento a orquestração de rede e compute desenhada para este cluster:
+
+![Arquitetura EKS Scorpion](img/arquitetura-scorpion.png)
+
+---
+
+### Detalhamento Técnico das Camadas
+
+O diagrama acima ilustra o fluxo de dados e controle, dividido em 6 pilares estratégicos:
+
+| Pilar | Descrição Técnica e Decisões de Design |
+| :--- | :--- |
+| **Pilar 1: Networking & IAM** | **VPC CNI:** Escolhido para que cada Pod receba um IP real da VPC, otimizando a latência de rede.<br>**IRSA:** Implementação de permissões granulares do IAM diretamente para os Pods (Princípio de Least Privilege). |
+| **Pilar 2: Control Plane** | **Gerenciamento:** Totalmente operado pela AWS em múltiplas Zonas de Disponibilidade (AZs) para garantir **Alta Disponibilidade (HA)** do API Server e etcd. |
+| **Pilar 3: Data Plane (Workers)** | **Managed Node Groups:** Workers em instâncias EC2, com automação de atualizações de segurança e patches operados pelo EKS. |
+| **Pilar 4: Orquestração** | **CoreDNS & kube-proxy:** Componentes vitais para a descoberta de serviços e gerenciamento de rede dentro do cluster. |
+| **Pilar 5: Workloads (Scorpion)** | **Deployment:** Objeto Kubernetes imutável que garante a quantidade correta de réplicas rodando.<br>**Services:** Exposição via *ClusterIP* ou *LoadBalancer* para entrada de tráfego. |
+| **Pilar 6: Lógica de Negócio** | **Microserviço Scorpion:** A aplicação Python/Node.js otimizada para containers, rodando de forma isolada e segura. |
+
+---
+
+> **Destaque Visual:** O diagrama demonstra como a aplicação Scorpion (Camada 6) é orquestrada através de camadas de compute, rede e orquestração gerenciadas pela AWS (EKS), garantindo que um recrutador entenda a profundidade técnica do projeto em um piscar de olhos.
 
 ---
 
@@ -70,4 +91,5 @@ A aplicação **Scorpion** está operando em um ambiente resiliente, escalável 
 ![Scorpion Live](img/14.png)
 
 ---
+
 **Autor:** [Gustavo Gomes](https://github.com/gustavogomes43) | *Cloud & Kubernetes Engineer*
