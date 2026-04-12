@@ -73,4 +73,6 @@ A aplicação **Scorpion** está operando em um ambiente resiliente, escalável 
 ![Scorpion Live](img/14.png)
 
 ---
+"Arquitetura Scorpion: Escalonável por design, resiliente por natureza."
+
 **Autor:** [Gustavo Gomes] | *Cloud & Kubernetes Engineer*
